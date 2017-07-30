@@ -20,7 +20,7 @@ Vagrant.configure(2) do |config|
     # free to beef it up to improve performance if needed.
     v.name = "ops-class.org"
     v.cpus = "1"
-    v.memory = "512"
+    v.memory = "1024"
     # 24 Dec 2015 : GWA : Uncomment this if you want a GUI environment.
     # v.gui = true
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
@@ -38,6 +38,7 @@ echo "Now run vagrant ssh"
 DONE
 
   config.vm.provision "shell", "inline": $script
+  config.vm.provision "file", source: "~/.gitconfig", destination: ".gitconfig"
 end
 
 # vim: ts=2:sw=2:et:ft=ruby
